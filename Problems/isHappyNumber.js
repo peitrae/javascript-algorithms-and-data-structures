@@ -21,7 +21,7 @@ var isHappy = function (n) {
 
 		for (let i = 0; i < arrayOfDigits.length; i++) {
 			sum += Math.pow(arrayOfDigits[i], 2);
-		} // NOTE: Count the sum of the squares of array of digits
+		} // NOTE: Count the sum of the squares of the array of digits
 
 		if (sum === 1) {
 			return true;
