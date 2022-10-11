@@ -12,7 +12,26 @@ class SinglyLinkedList {
 		this.length = 0;
 	}
 
-	// TODO: push (val)
+  /**
+   * Add item to the end of linked list
+   * @param {Node} val
+   * @returns {SinglyLinkedList}
+   */
+	push (val) {
+    const newNode = new Node(val);
+
+    if(this.length) {
+      this.tail.next = newNode;
+      this.tail = newNode;
+    } else {
+      this.head = newNode;
+      this.tail = this.head;
+    }
+
+    this.length++;
+    
+    return this
+  }
 
 	// TODO: pop ()
 
@@ -22,15 +41,13 @@ class SinglyLinkedList {
 
 	// TODO: get (index)
 
-	// set (val, index)
+	// TODO: set (val, index)
 
-	// insert (val, index)
+	// TODO: insert (val, index)
 
-	// remove (index)
+	// TODO: remove (index)
 
-	// reverse ()
+	// TODO: reverse ()
 
-	// print ()
+	// TODO: print ()
 }
-
-const list = new SinglyLinkedList();
