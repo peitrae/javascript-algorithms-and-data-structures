@@ -65,6 +65,7 @@ class SinglyLinkedList {
 		if (this.length === 1) {
 			this.head = null;
 			this.tail = null;
+			this.length = 0;
 
 			return val;
 		}
@@ -82,7 +83,34 @@ class SinglyLinkedList {
 		return val;
 	}
 
-	// TODO: shift ()
+	/**
+	 * Remove item at the beginning of linked list
+	 * @returns {any}
+	 */
+	shift() {
+		/**
+		 * IF the length is less than 2, use pop method
+		 * SET value to the value of head
+		 * SET the head to the next of head
+		 * IF the tail is 0, SET the tail value to be null
+		 *
+		 * return the value
+		 */
+
+		if (this.length < 2) {
+			return this.pop();
+		}
+
+		const val = this.head.val;
+		this.head = this.head.next;
+		this.length--;
+
+		if (this.length === 0) {
+			this.tail = null;
+		}
+
+		return val;
+	}
 
 	// TODO: unshift (val)
 
