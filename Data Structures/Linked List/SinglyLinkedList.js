@@ -12,28 +12,75 @@ class SinglyLinkedList {
 		this.length = 0;
 	}
 
-  /**
-   * Add item to the end of linked list
-   * @param {Node} val
-   * @returns {SinglyLinkedList}
-   */
-	push (val) {
-    const newNode = new Node(val);
+	/**
+	 * Add item to the end of linked list
+	 * @param {any} val
+	 * @returns {SinglyLinkedList}
+	 */
+	push(val) {
+		/**
+		 * IF the length is not 0
+		 *    SET the next of tail to the new node
+		 *    SET the new node to be the new tail
+		 * ELSE
+		 *    SET the new node to be the head and the tail
+		 */
 
-    if(this.length) {
-      this.tail.next = newNode;
-      this.tail = newNode;
-    } else {
-      this.head = newNode;
-      this.tail = this.head;
-    }
+		const newNode = new Node(val);
 
-    this.length++;
-    
-    return this
-  }
+		if (this.length) {
+			this.tail.next = newNode;
+			this.tail = newNode;
+		} else {
+			this.head = newNode;
+			this.tail = this.head;
+		}
 
-	// TODO: pop ()
+		this.length++;
+
+		return this;
+	}
+
+	/**
+	 * Remove item at the end of linked list
+	 * @returns {any}
+	 */
+	pop() {
+		/**
+		 * IF length is 0, return null
+		 * IF length is 1, set the head and the tail to null and return the value
+		 * SET the tail to the second last node of the list
+		 * SET the next of tail to null
+		 *
+		 * return the value
+		 */
+
+		if (this.length === 0) {
+			return null;
+		}
+
+		let current = this.head;
+		let val = current.val;
+
+		if (this.length === 1) {
+			this.head = null;
+			this.tail = null;
+
+			return val;
+		}
+
+		while (current.next !== this.tail) {
+			current = current.next;
+		}
+
+		val = current.next.val;
+		this.tail = current;
+		this.tail.next = null;
+
+		this.length--;
+
+		return val;
+	}
 
 	// TODO: shift ()
 
@@ -51,3 +98,5 @@ class SinglyLinkedList {
 
 	// TODO: print ()
 }
+
+const list = new SinglyLinkedList();
