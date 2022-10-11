@@ -48,11 +48,17 @@ class SinglyLinkedList {
 	pop() {
 		/**
 		 * IF length is 0, return null
-		 * IF length is 1, set the head and the tail to null and return the value
-		 * SET the tail to the second last node of the list
-		 * SET the next of tail to null
+		 * SET current to the head
+		 * SET new tail to current
+		 * IF length is 1, set the head and the tail to null and return current
 		 *
-		 * return the value
+		 * WHILE the next of current is exist
+		 *    SET the new tail the current
+		 *    SET current to the next of current
+		 *
+		 * SET the tail to the new tail
+		 *
+		 * return current
 		 */
 
 		if (this.length === 0) {
@@ -60,27 +66,27 @@ class SinglyLinkedList {
 		}
 
 		let current = this.head;
-		let val = current.val;
+		let newTail = current;
 
 		if (this.length === 1) {
 			this.head = null;
 			this.tail = null;
 			this.length = 0;
 
-			return val;
+			return current;
 		}
 
-		while (current.next !== this.tail) {
+		while (current.next) {
+			newTail = current;
 			current = current.next;
 		}
 
-		val = current.next.val;
-		this.tail = current;
+		this.tail = newTail;
 		this.tail.next = null;
 
 		this.length--;
 
-		return val;
+		return current;
 	}
 
 	/**
@@ -90,18 +96,18 @@ class SinglyLinkedList {
 	shift() {
 		/**
 		 * IF the length is less than 2, use pop method
-		 * SET value to the value of head
+		 * SET current to the head
 		 * SET the head to the next of head
 		 * IF the tail is 0, SET the tail value to be null
 		 *
-		 * return the value
+		 * return the current
 		 */
 
 		if (this.length < 2) {
 			return this.pop();
 		}
 
-		const val = this.head.val;
+		const current = this.head;
 		this.head = this.head.next;
 		this.length--;
 
@@ -109,7 +115,7 @@ class SinglyLinkedList {
 			this.tail = null;
 		}
 
-		return val;
+		return current;
 	}
 
 	// TODO: unshift (val)
