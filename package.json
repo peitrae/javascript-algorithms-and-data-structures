@@ -1,0 +1,23 @@
+{
+  "name": "algorithms-and-data-structures",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "yarn nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peitrae/javascript-algorithms-and-data-structures.git"
+  },
+  "author": "Peitra Erdi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/peitrae/javascript-algorithms-and-data-structures/issues"
+  },
+  "homepage": "https://github.com/peitrae/javascript-algorithms-and-data-structures#readme",
+  "dependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
