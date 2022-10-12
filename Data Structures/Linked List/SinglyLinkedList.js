@@ -43,7 +43,7 @@ class SinglyLinkedList {
 
 	/**
 	 * Remove item at the end of linked list
-	 * @returns {any}
+	 * @returns {Node}
 	 */
 	pop() {
 		/**
@@ -91,7 +91,7 @@ class SinglyLinkedList {
 
 	/**
 	 * Remove item at the beginning of linked list
-	 * @returns {any}
+	 * @returns {Node}
 	 */
 	shift() {
 		/**
@@ -148,7 +148,26 @@ class SinglyLinkedList {
 		return this;
 	}
 
-	// TODO: get (index)
+	/**
+	 * Add item at the beginning of the list
+	 * @param {Number} index
+	 * @returns {Node | null}
+	 */
+	get(index) {
+		if (index < 0 || index >= this.length) {
+			return null;
+		}
+
+		let current = this.head;
+
+		while (index > 0) {
+			current = current.next;
+
+			index--;
+		}
+
+		return current;
+	}
 
 	// TODO: set (val, index)
 
