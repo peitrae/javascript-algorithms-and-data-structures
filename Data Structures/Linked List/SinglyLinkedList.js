@@ -118,7 +118,35 @@ class SinglyLinkedList {
 		return current;
 	}
 
-	// TODO: unshift (val)
+	/**
+	 * Add item at the beginning of the list
+	 * @param {*} val
+	 * @returns {SinglyLinkedList}
+	 */
+	unshift(val) {
+		/**
+		 * IF this.head is exist
+		 *    SET the next of new node to the head
+		 *    SET the head to the new node
+		 * ELSE
+		 *    SET the head to the new node
+		 *    SET the tail to the head
+		 */
+
+		const newNode = new Node(val);
+
+		if (this.head) {
+			newNode.next = this.head;
+			this.head = newNode;
+		} else {
+			this.head = newNode;
+			this.tail = this.head;
+		}
+
+		this.length++;
+
+		return this;
+	}
 
 	// TODO: get (index)
 
