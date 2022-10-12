@@ -154,6 +154,16 @@ class SinglyLinkedList {
 	 * @returns {Node | null}
 	 */
 	get(index) {
+		/**
+		 * IF index less than 0 or more than list length, return null
+		 *
+		 * WHILE index is more than 0
+		 *    SET current to the next of current
+		 *    REDUCE index
+		 *
+		 * RETURN current
+		 */
+
 		if (index < 0 || index >= this.length) {
 			return null;
 		}
@@ -169,7 +179,30 @@ class SinglyLinkedList {
 		return current;
 	}
 
-	// TODO: set (val, index)
+	/**
+	 *
+	 * @param {*} val
+	 * @param {Number} index
+	 * @returns {Node}
+	 */
+	set(val, index) {
+		/**
+		 * SET current equal to node by index
+		 * IF current is not exist, RETURN null
+		 *
+		 * SET current value to val
+		 * RETURN current
+		 */
+		const current = this.get(index);
+
+		if (!current) {
+			return null;
+		}
+
+		current.val = val;
+
+		return current;
+	}
 
 	// TODO: insert (val, index)
 
