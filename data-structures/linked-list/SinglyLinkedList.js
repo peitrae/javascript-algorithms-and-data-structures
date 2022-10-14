@@ -204,7 +204,53 @@ class SinglyLinkedList {
 		return current;
 	}
 
-	// TODO: insert (val, index)
+	/**
+	 *
+	 * @param {*} val
+	 * @param {Number} index
+	 * @returns {SinglyLinkedList | null}
+	 */
+	insert(val, index) {
+		/**
+		 * IF index is less than 0 or more than the length of the list, return null
+		 * ELSE IF index is 0, insert by using unshift
+		 * ELSE IF index is equal to the length of the list, insert by using push
+		 *
+		 * SET prev to the head
+		 *
+		 * WHILE index - 1 > 0
+		 *    SET prev to the next of prev
+		 *    index--
+		 *
+		 * SET the next of new node to the next of the prev
+		 * SET the next of the prev to the new node
+		 * length++
+		 *
+		 * return this
+		 */
+
+		if (index < 0 || index > this.length) {
+			return null;
+		} else if (index === 0) {
+			return this.unshift(val);
+		} else if (index === this.length) {
+			return this.push(val);
+		}
+
+		const newNode = new Node(val);
+		let prev = this.head;
+
+		while (index - 1 > 0) {
+			prev = prev.next;
+			index--;
+		}
+
+		newNode.next = prev.next;
+		prev.next = newNode;
+		this.length++;
+
+		return this;
+	}
 
 	// TODO: remove (index)
 
