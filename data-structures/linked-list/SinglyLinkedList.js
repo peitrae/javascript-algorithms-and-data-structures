@@ -252,7 +252,53 @@ class SinglyLinkedList {
 		return this;
 	}
 
-	// TODO: remove (index)
+	/**
+	 *
+	 * @param {Number} index
+	 * @returns {Node}
+	 */
+	remove(index) {
+		/**
+		 * IF index is less than 0 or more than the length of the list, return null
+		 * ELSE IF index is 0, remove by using shift
+		 * ELSE IF index is equal to the length of the list, remove by using pop
+		 *
+		 * SET current to the next of head
+		 * SET prev to the head
+		 *
+		 * WHILE index > 1
+		 *    SET prev to current
+		 *    SET current to the next of current
+		 *    index--
+		 *
+		 * SET the next of prev to the next of current
+		 * length--
+		 *
+		 * return current
+		 */
+
+		if (index < 0 || index >= this.length) {
+			return null;
+		} else if (index === 0) {
+			return this.shift();
+		} else if (index === this.length - 1) {
+			return this.pop();
+		}
+
+		let prev = this.head;
+		let current = this.head.next;
+
+		while (index > 1) {
+			prev = current;
+			current = current.next;
+			index--;
+		}
+
+		prev.next = current.next;
+		this.length--;
+
+		return current;
+	}
 
 	// TODO: reverse ()
 
