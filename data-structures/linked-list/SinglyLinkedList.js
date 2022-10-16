@@ -300,7 +300,44 @@ class SinglyLinkedList {
 		return current;
 	}
 
-	// TODO: reverse ()
+	/**
+	 *
+	 * @returns {SinglyLinkedList}
+	 */
+	reverse() {
+		/**
+		 * Reverse the head and the tail
+		 *
+		 * SET current to the head
+		 * SET prev to null
+		 * SET next to null
+		 *
+		 * Loop through the list
+		 *    SET the next to the next of current node
+		 *    SET the next of the current node to the prev
+		 *    SET the prev to the current node
+		 *    SET the current node to the next
+		 *
+		 * return the list
+		 */
+
+		let current = this.head;
+		this.head = this.tail;
+		this.tail = current;
+
+		let prev = null;
+		let next = null;
+
+		for (let i = 0; i < this.length; i++) {
+			next = current.next;
+			current.next = prev;
+
+			prev = current;
+			current = next;
+		}
+
+		return this;
+	}
 
 	// TODO: print ()
 }
