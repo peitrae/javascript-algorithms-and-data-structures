@@ -339,7 +339,32 @@ class SinglyLinkedList {
 		return this;
 	}
 
-	// TODO: print ()
+	/**
+	 *
+	 * @returns {any[]}
+	 */
+	toArray() {
+		/**
+		 * SET array to empty array
+		 * SET current to the head
+		 *
+		 * Loop through the array
+		 *    SET array current index to the val of current
+		 *    SET current to the next of current
+		 *
+		 * return array
+		 */
+
+		const arr = new Array(this.length);
+		let current = this.head;
+
+		for (let i = 0; i < this.length; i++) {
+			arr[i] = current.val;
+			current = current.next;
+		}
+
+		return arr;
+	}
 }
 
 const list = new SinglyLinkedList();
