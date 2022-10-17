@@ -13,25 +13,57 @@ class DoublyLinkedList {
 		this.length = null;
 	}
 
-  // push(val)
+	/**
+	 *
+	 * @param {*} val
+	 * @returns {DoublyLinkedList}
+	 */
+	push(val) {
+		/**
+		 * IF the list is still empty
+		 *    SET the head and the tail to the new node
+		 * ELSE
+		 *    SET the next of the tail to the new node
+		 *    SET the prev of the new node to the tail
+		 *    SET the tail to the new node
+		 *
+		 * length++
+		 * return the list
+		 */
 
-  // pop()
+		const newNode = new Node(val);
 
-  // unshift(val)
+		if (!this.head) {
+			this.head = newNode;
+			this.tail = this.head;
+		} else {
+			this.tail.next = newNode;
+			newNode.prev = this.tail;
+			this.tail = newNode;
+		}
 
-  // shift()
+		this.length++;
 
-  // get(index)
+		return this;
+	}
 
-  // set(val, index)
+	// pop()
 
-  // insert(val, index)
+	// unshift(val)
 
-  // remove(index)
+	// shift()
 
-  // reverse()
+	// get(index)
 
-  // toArray()
+	// set(val, index)
+
+	// insert(val, index)
+
+	// remove(index)
+
+	// reverse()
+
+	// toArray()
 }
 
-
+const list = new DoublyLinkedList();
