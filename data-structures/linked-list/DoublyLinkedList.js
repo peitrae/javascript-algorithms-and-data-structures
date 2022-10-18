@@ -169,7 +169,59 @@ class DoublyLinkedList {
 		return current;
 	}
 
-	// get(index)
+	/**
+	 *
+	 * @param {Number} index
+	 * @returns {Node | null}
+	 */
+	get(index) {
+		/**
+		 * IF index is less than 0 or more than the length, return null
+		 *
+		 * SET median of the list
+		 *
+		 * IF index less than median
+		 *    SET current to the head
+		 *    Loop through the list from the head
+		 *        SET current to the next of current
+		 * ELSE
+		 *    SET current to the tail
+		 *    Loop through the list from the tail
+		 *        SET current to the prev of current
+		 *
+		 * return current
+		 */
+
+		if (index < 0 || index >= this.length) {
+			return null;
+		}
+
+		const median = Math.floor(this.length / 2);
+		let current;
+		let counter;
+
+		if (index < median) {
+			current = this.head;
+			counter = 0;
+
+			while (counter !== index) {
+				current = current.next;
+
+				counter++;
+			}
+		} else {
+			current = this.tail;
+			counter = this.length - 1;
+
+			while (counter !== index) {
+				current = current.prev;
+
+				counter--;
+			}
+		}
+
+		return current;
+	}
 
 	// set(val, index)
 
