@@ -90,9 +90,84 @@ class DoublyLinkedList {
 		return current;
 	}
 
-	// unshift(val)
+	/**
+	 *
+	 * @param {*} val
+	 * @returns {DoublyLinkedList}
+	 */
+	unshift(val) {
+		/**
+		 * IF the length is 0
+		 *    SET the tail to the new node
+		 * ELSE
+		 *    SET the next of the new node to the head
+		 *    SET the prev of the head to the new node
+		 *
+		 * SET the head to the new node
+		 * length++
+		 *
+		 * return the list
+		 */
 
-	// shift()
+		const newNode = new Node(val);
+
+		if (this.length === 0) {
+			this.tail = newNode;
+		} else {
+			newNode.next = this.head;
+			this.head.prev = newNode;
+		}
+
+		this.head = newNode;
+		this.length++;
+
+		return this;
+	}
+
+	/**
+	 * @returns {Node}
+	 */
+	shift() {
+		/**
+		 * 30 <-> 20 <-> 10
+		 *
+		 * IF the length is 0, return null
+		 *
+		 * SET current to the head
+		 *
+		 * IF the length is 1
+		 *    SET the head to null
+		 *    SET the tail to null
+		 * ELSE
+		 *    SET the head to the next of the head
+		 *    SET the prev of the head to null
+		 *
+		 * SET the next of current to null
+		 *
+		 * length--
+		 * return current
+		 *
+		 */
+
+		if (this.length === 0) {
+			return null;
+		}
+
+		const current = this.head;
+
+		if (this.length === 1) {
+			this.head = null;
+			this.tail = null;
+		} else {
+			this.head = this.head.next;
+			this.head.prev = null;
+		}
+
+		current.next = null;
+		this.length--;
+
+		return current;
+	}
 
 	// get(index)
 
