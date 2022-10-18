@@ -47,7 +47,48 @@ class DoublyLinkedList {
 		return this;
 	}
 
-	// pop()
+	/**
+	 * @returns {Node}
+	 */
+	pop() {
+		/**
+		 * IF the list length is 0
+		 *    return null
+		 *
+		 * SET current to the tail
+		 * IF the list length is 1
+		 *    SET the head to null
+		 *    SET the tail to null
+		 * ELSE
+		 *    SET the tail equal to the prev of the tail
+		 *    SET the next of the tail to null
+		 *
+		 * SET the prev of current to null
+		 *
+		 * length--
+		 * return current
+		 *
+		 */
+
+		if (this.length === 0) {
+			return null;
+		}
+
+		const current = this.tail;
+
+		if (this.length === 1) {
+			this.head = null;
+			this.tail = null;
+		} else {
+			this.tail = this.tail.prev;
+			this.tail.next = null;
+		}
+
+		current.prev = null;
+		this.length--;
+
+		return current;
+	}
 
 	// unshift(val)
 
