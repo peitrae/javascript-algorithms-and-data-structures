@@ -223,7 +223,33 @@ class DoublyLinkedList {
 		return current;
 	}
 
-	// set(val, index)
+	/**
+	 *
+	 * @param {*} val
+	 * @param {Number} index
+	 * @returns {Node | null}
+	 */
+	set(val, index) {
+		/**
+		 * SET current node from get method
+		 *
+		 * IF current node is not exists, return null
+		 *
+		 * SET current node value to val
+		 *
+		 * return current
+		 */
+
+		const current = this.get(index);
+
+		if (!current) {
+			return null;
+		}
+
+		current.val = val;
+
+		return current;
+	}
 
 	// insert(val, index)
 
