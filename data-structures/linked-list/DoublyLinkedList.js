@@ -295,7 +295,44 @@ class DoublyLinkedList {
 		return this;
 	}
 
-	// remove(index)
+	/**
+	 *
+	 * @param {Number} index
+	 * @returns {Node | null}
+	 */
+	remove(index) {
+		/**
+		 * IF index is less than 0 or more than equal to the length of the list, return null
+		 * ELSE IF index is equal to 0, remove by using the shift method
+		 * ELSE IF index is equal to the length of the list - 1, remove by using the pop method
+		 *
+		 * SET current node by using get method
+		 * SET the prev of the next of current node to the prev of current node
+		 * SET the next of the previous of current node to the next of current node
+		 * SET the prev and the next of current node to null
+		 *
+		 * length--
+		 * return current
+		 */
+
+		if (index < 0 || index >= this.length) {
+			return null;
+		} else if (index === 0) {
+			return this.shift();
+		} else if (index === this.length - 1) {
+			return this.pop();
+		}
+
+		const current = this.get(index);
+		current.next.prev = current.prev;
+		current.prev.next = current.next;
+		current.next = null;
+		current.prev = null;
+
+		this.length--;
+
+		return current;
+	}
 
 	// reverse()
 
