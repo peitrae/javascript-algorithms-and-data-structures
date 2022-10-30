@@ -251,7 +251,50 @@ class DoublyLinkedList {
 		return current;
 	}
 
-	// insert(val, index)
+
+  /**
+   * 
+   * @param {*} val 
+   * @param {Number} index 
+   * @returns {DoublyLinkedList | null}
+   */
+	insert(val, index) {
+    /**
+     * IF index is less than 0 or more than the length of the list, return null
+     * ELSE IF index is 0, insert by using unshift method
+     * ELSE IF index is equal to the length of the list, insert by using push
+     * 
+     * SET prevNode to the previous of the node by index
+     * SET the next of the new node to the next of prevNode
+     * SET the previous of the new node to the prevNode
+     * SET the previous of the next of the prevNode to the new node
+     * SET the next of the prevNode to the new node
+     * 
+     * length++
+     * 
+     * return this
+     */
+
+    if(index < 0 || index > this.length ) {
+      return null;
+    } else if (index === 0) {
+      return this.unshift(val);
+    } else if(index === this.length) {
+      return this.push(val);
+    }
+
+    const newNode = new Node(val);
+    const prevNode = this.get(index - 1);
+
+    newNode.next = prevNode.next;
+    newNode.prev = prevNode;
+    prevNode.next.prev = newNode;
+    prevNode.next = newNode;
+
+    this.length++;
+
+    return this
+  }
 
 	// remove(index)
 
@@ -261,3 +304,5 @@ class DoublyLinkedList {
 }
 
 const list = new DoublyLinkedList();
+
+
