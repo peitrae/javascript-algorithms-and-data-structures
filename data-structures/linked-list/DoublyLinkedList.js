@@ -334,7 +334,46 @@ class DoublyLinkedList {
 		return current;
 	}
 
-	// reverse()
+	/**
+	 * @returns {DoublyLinkedList}
+	 */
+	reverse() {
+		/**
+		 *     30 -> 20 -> 10 -> 5
+		 *  <-     <-    <-    <-
+		 *    c
+		 *
+		 *
+		 *
+		 * Swap the head and the tail of the list
+		 * Set current to the head
+		 * Set prev to null
+		 *
+		 * Loop through the list
+		 *    Set the next of the current to the previous of the current
+		 *    Set the previous of the current to the prev
+		 *    Set the prev to the current
+		 *    Set the current to the next of current
+		 *
+		 * return the list
+		 */
+
+		let temp = this.head;
+		this.head = this.tail;
+		this.tail = temp;
+
+		let current = this.head;
+		let prev = null;
+
+		while (current) {
+			current.next = current.prev;
+			current.prev = prev;
+			prev = current;
+			current = current.next;
+		}
+
+		return this;
+	}
 
 	/**
 	 * @returns {any[]}
@@ -363,3 +402,11 @@ class DoublyLinkedList {
 }
 
 const list = new DoublyLinkedList();
+list.push(30);
+list.push(20);
+list.push(10);
+list.push(5);
+
+list.reverse();
+
+// console.log(list.reverse());
