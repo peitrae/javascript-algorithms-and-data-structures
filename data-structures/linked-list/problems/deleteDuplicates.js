@@ -30,6 +30,10 @@ var deleteDuplicates = function (head) {
 	 *
 	 */
 
+	if (!head || !head.next) {
+		return head;
+	}
+
 	let current = head;
 
 	while (current.next) {
